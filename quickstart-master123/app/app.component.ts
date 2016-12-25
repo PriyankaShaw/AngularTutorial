@@ -1,26 +1,22 @@
 import { Component } from '@angular/core';
+import { Hero } from './hero';
 
-export class Hero {
-     id: number;
-     name: String;
- }
 
- const HEROES: Hero[]=[
-     { id:11, name: 'Mr. Nice'},
-     { id:12, name: 'Nacro'},
-     { id:13, name: 'Bombasto'},
-     { id:14, name: 'celeritas'},
-     { id:15, name: 'Magneta'},
-     { id:16, name: 'Rubberman'},
-     { id:17, name: 'Dynama'},
-     { id:18, name: 'Dr IQ'},
-     { id:19, name: 'Magma'},
-     { id:20, name: 'Tornado'}
- ];
-
+const HEROES: Hero[] = [
+  { id: 11, name: 'Mr. Nice' },
+  { id: 12, name: 'Narco' },
+  { id: 13, name: 'Bombasto' },
+  { id: 14, name: 'Celeritas' },
+  { id: 15, name: 'Magneta' },
+  { id: 16, name: 'RubberMan' },
+  { id: 17, name: 'Dynama' },
+  { id: 18, name: 'Dr IQ' },
+  { id: 19, name: 'Magma' },
+  { id: 20, name: 'Tornado' }
+];
 @Component({
-    selector: 'my-app',
-    template: `
+  selector: 'my-app',
+  template: `
     <h1>{{title}}</h1>
     <h2>My Heroes</h2>
     <ul class="heroes">
@@ -30,18 +26,10 @@ export class Hero {
         <span class="badge">{{hero.id}}</span> {{hero.name}}
       </li>
     </ul>
-    <div *ngIf="selectedHero">
-    <h2>{{selectedHero.name}} details!</h2>
-      <div><label>id: </label>{{selectedHero.id}}</div>
-      <div>
-        <label>name: </label>
-        <input [(ngModel)]="selectedHero.name" placeholder="name"/>
-      </div>
-    </div>
-	
-    `,
- styles: [`
- .selected {
+   <my-hero-detail [hero]="selectedHero"></my-hero-detail>
+  `,
+  styles: [`
+  .selected {
      background-color: #B0C4DE !important;
      color: Crimson ;
  }
@@ -90,19 +78,14 @@ border-radius: 4px;
     height: 1.8em;
     margin-right: .8em;
     border-radius: 4px 0 0 4px;
-  }
+    }
   `]
-
 })
- 
-
-
- export class AppComponent { 
-    title= 'Tour of Heroes';
-   selectedHero: Hero;
-    heroes=HEROES;
-
-     onSelect(hero: Hero): void {
+export class AppComponent {
+  title = 'Tour of Heroes';
+  heroes = HEROES;
+  selectedHero: Hero;
+  onSelect(hero: Hero): void {
     this.selectedHero = hero;
+  }
 }
- }
